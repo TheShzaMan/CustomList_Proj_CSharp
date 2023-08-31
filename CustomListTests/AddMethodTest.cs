@@ -89,6 +89,22 @@ namespace CustomListTests
             // Assert
             Assert.AreEqual("B", customList.Items[1]);
         }
+        [TestMethod]
+        public void Add_ItemEIndexAfterCapacityIncrease_EIsIndex4()
+        {
+            // Arrange
+            CustomList<string> customList = new CustomList<string>();
+
+            // Act
+            customList.Add("A");
+            customList.Add("B");
+            customList.Add("C");
+            customList.Add("D");
+            customList.Add("E");
+
+            // Assert
+            Assert.AreEqual("E", customList.Items[4]);
+        }
 
         //[TestMethod]
         //public void Add_ListHasIndex_HasIndex()

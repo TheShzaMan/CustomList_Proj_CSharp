@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,24 +32,23 @@ namespace CustomList
             //'item' parameter should be added to internal 'items' array
             //if items array is at capacity, double capacity and create new array
             //transfer all items to new array
-            Items[count] = item;
-            count++;
-
-            if (count == capacity) 
+            if (count < capacity)
+            {
+                Items[count] = item;
+                count++;
+            }
+            else  
             {
                 capacity *= 2;
-                items = new T[capacity];    
-                //CustomList<T> ItemsExtend = new CustomList<T>();
-                //for (int i = 0; i < length; i++)
-                //{
-                //    Items[i]
-                //}
-                //{
-
-                //}
-            } 
-                
-
+                T[] newItems = new T[capacity];
+                for (int i = 0; i < count; i++)
+                {
+                    newItems[i] = Items[i];
+                }
+                newItems[count] = item;
+                count++;
+                items = newItems;
+            }
         }
 
         public bool Remove(T item)
