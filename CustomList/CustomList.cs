@@ -31,6 +31,24 @@ namespace CustomList
             //'item' parameter should be added to internal 'items' array
             //if items array is at capacity, double capacity and create new array
             //transfer all items to new array
+            Items[count] = item;
+            count++;
+
+            if (count == capacity) 
+            {
+                capacity *= 2;
+                items = new T[capacity];    
+                //CustomList<T> ItemsExtend = new CustomList<T>();
+                //for (int i = 0; i < length; i++)
+                //{
+                //    Items[i]
+                //}
+                //{
+
+                //}
+            } 
+                
+
         }
 
         public bool Remove(T item)

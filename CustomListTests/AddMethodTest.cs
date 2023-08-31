@@ -23,7 +23,7 @@ namespace CustomListTests
         {
             // Arrange
             CustomList<string> customList = new CustomList<string>();
-            
+
             // Act
             customList.Add("item");
 
@@ -44,11 +44,25 @@ namespace CustomListTests
             Assert.AreEqual("item2", customList.Items[1]);
         }
         [TestMethod]
+        public void Add_ThirdItemAdded_ItemIsFoundInIndex2()
+        {
+            // Arrange
+            CustomList<string> customList = new CustomList<string>();
+
+            // Act
+            customList.Add("item1");
+            customList.Add("item2");
+            customList.Add("item3");
+
+            // Assert
+            Assert.AreEqual("item3", customList.Items[2]);
+        }
+        [TestMethod]
         public void Add_ItemAddedExceedsCapacityValue_CapacityDoubles()
         {
             // Arrange
             CustomList<string> customList = new CustomList<string>();
-            
+
             // Act
             customList.Add("A");
             customList.Add("B");
@@ -75,6 +89,19 @@ namespace CustomListTests
             // Assert
             Assert.AreEqual("B", customList.Items[1]);
         }
+
+        //[TestMethod]
+        //public void Add_ListHasIndex_HasIndex()
+        //{
+        //    //Arrange
+        //    CustomList<int> myList = new CustomList<int>();
+
+        //    //Act
+        //    int indexZero = myList.Items[4];
+
+        //    //Assert
+        //    Assert.AreEqual(0, indexZero);
+        //}
     }
 
 
