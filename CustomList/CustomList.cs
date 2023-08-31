@@ -13,14 +13,18 @@ namespace CustomList
         private int capacity;
         private int count;
 
+        public T[] Items { get => items; set => items = value; }
+        public int Capacity { get => capacity; }//set => capacity = value; }
+        public int Count { get => count; }
+
         //Constructor
         public CustomList()
         {
-            //capacity = 
-            //count =
-            //items = 
+            capacity = 4;
+            count = 0;
+            items = new T[capacity];
+            
         }
-
         //Member Methods (CAN DO)
         public void Add(T item)
         {
