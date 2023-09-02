@@ -15,7 +15,7 @@ namespace CustomListTests
     {
        
         [TestMethod]
-        public void Remove_ItemInArray_ItemIsRemovedFromArray()
+        public void Remove_ItemAInArray_ItemAIsRemovedFromArray()
         {
             // Arrange
             CustomList<string> customList = new CustomList<string>();
@@ -26,8 +26,16 @@ namespace CustomListTests
 
             // Act
             customList.Remove("a");
+            int a_Count = 0;
+            foreach (string item in customList.Items) 
+            {
+                if (item == "a")
+                {
+                    a_Count++;
+                }
+            }
             // Assert
-            Assert.AreEqual(3, customList.Count);
+            Assert.AreEqual(0, a_Count);
         }
         
         [TestMethod]
@@ -44,7 +52,21 @@ namespace CustomListTests
             // Assert
             Assert.IsTrue(customList.Count == 3);
         }
-        
+        [TestMethod]
+        public void Remove_AttemptRemovingItemNotInList_ReturnsFalse()
+        {
+            // Arrange
+            CustomList<string> customList = new CustomList<string>();
+            customList.Add("a");
+            customList.Add("b");
+            customList.Add("c");
+            customList.Add("d");
+            // Act
+            customList.Remove("e");
+            // Assert
+            Assert.IsFalse(customList.Count == 3);
+        }
+
         [TestMethod]
         public void Remove_CountWhenTryingToRemoveItemNotInList_RemainsUnchanged()
         {

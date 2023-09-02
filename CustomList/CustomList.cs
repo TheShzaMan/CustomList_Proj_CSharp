@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
         //Member Variables (HAS A)
         private T[] items;
@@ -56,13 +57,42 @@ namespace CustomList
             //If 'item' exists in the 'items' array, remove its first instance
             //Any items coming after the removed item should be shifted down so there is no empty index.
             //If 'item' was removed, return true. If no item was removed, return false.
-            return false;
+
+            bool itemRemoved = false;
+            if (items.Contains(item))
+            {
+                T[] newArray = new T[capacity];
+                for (int i = 0, j = 0; i < count; i++, j++)
+                {
+                    newArray[j] = items[i];
+                    if (i == j)
+                    {
+                        if (items[i].Equals(item))
+                        {
+                            j--;
+                        }
+                    }
+                }
+                items = newArray;
+                count--;
+                itemRemoved = true; 
+            }
+            return itemRemoved;  
         }
 
         public override string ToString()
         {
             //returns a single string that contains all items from array
             return "";
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+
+            for (int i = 0; i < count; ++i)
+            {
+                yield return items[i];
+            }
         }
 
         public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)
