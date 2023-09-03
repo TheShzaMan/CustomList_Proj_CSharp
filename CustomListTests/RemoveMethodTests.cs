@@ -9,11 +9,9 @@ using CustomList;
 
 namespace CustomListTests
 {
-
     [TestClass]
     public class RemoveMethodTests
     {
-       
         [TestMethod]
         public void Remove_ItemAInArray_ItemAIsRemovedFromArray()
         {
