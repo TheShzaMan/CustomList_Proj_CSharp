@@ -6,19 +6,30 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
-            int c_Count = 0;
-            CustomList<string> customList = new CustomList<string> { "A","B","C","C","C","D","E" };
+            CustomList<bool> myList = new CustomList<bool>();
+            //myList.Add("a");
+            //myList.Add("b");
+            //myList.Add("c");
+            //myList.Add("d");
+            //myList.Add("e");
+            //myList.Add(true);
+            //myList.Add(true);
+            //myList.Add(false);
+            //myList.Add(true);
+            //myList.Add(false);
 
-            customList.Remove("C");
+            //string myListAsString = myList.ToString();
+            //Console.WriteLine(myListAsString);
+            CustomList<int> intList = new CustomList<int>();
+            intList.Add(1);
+            intList.Add(2);
+            intList.Add(3);
+            intList.Add(4);
+            intList.Add(5);
 
-            foreach (string item in customList)
-            {
-                if (item == "C")
-                {
-                    c_Count++;
-                }
-            }
-            Console.WriteLine(c_Count);
+
+            // Act
+            string newStringFromInts = intList.ToString();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,10 +84,17 @@ namespace CustomList
         public override string ToString()
         {
             //returns a single string that contains all items from array
-            return "";
+            string[] itemsAsStrings = new string[count];
+            for (int i = 0; i < count; i++)
+            {
+                string itemAsString = Convert.ToString(items[i]);
+                itemsAsStrings[i] = itemAsString;
+            }
+            string listAsString = string.Join(" ", itemsAsStrings);
+            return listAsString;
         }
 
-        public IEnumerator GetEnumerator()
+    public IEnumerator GetEnumerator()
         {
 
             for (int i = 0; i < count; ++i)

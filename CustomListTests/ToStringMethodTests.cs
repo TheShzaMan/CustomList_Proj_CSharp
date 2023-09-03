@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CustomList;
+using Microsoft.VisualBasic;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace CustomListTests
@@ -11,6 +13,12 @@ namespace CustomListTests
     [TestClass]
     public class ToStringMethodTests
     {
+        ///////ToString Method Override
+        
+        ////// - A List of strings returns expected result
+        ////// - A List of ints returns expected result
+        ////// - An empty list returns an empty string
+
         [TestMethod]
         public void ToString_listOfStrings_returnsString()
         {
@@ -26,13 +34,18 @@ namespace CustomListTests
             
             
             // Assert
-            Assert.IsTrue("Testing the ToString method. " == newStringFromList);
+            Assert.IsTrue("Testing the ToString method." == newStringFromList);
         }
         [TestMethod]
         public void ToString_listOfInts_returnsStringOfInts()
         {
             // Arrange
-            CustomList<int> intList = new CustomList<int> { 1, 2, 3, 4, 5};
+            CustomList<int> intList = new CustomList<int>();
+            intList.Add(1);
+            intList.Add(2);
+            intList.Add(3);
+            intList.Add(4);
+            intList.Add(5);
             
 
             // Act
@@ -40,7 +53,7 @@ namespace CustomListTests
 
 
             // Assert
-            Assert.IsTrue("1 2 3 4 5 " == newStringFromInts);
+            Assert.IsTrue("1 2 3 4 5" == newStringFromInts);
         }
         [TestMethod]
         public void ToString_blankList_returnsBlankString()
@@ -54,7 +67,7 @@ namespace CustomListTests
 
 
             // Assert
-            Assert.IsTrue(" " == newStringBlank);
+            Assert.IsTrue("" == newStringBlank);
         }
 
     }
