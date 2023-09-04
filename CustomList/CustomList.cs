@@ -106,7 +106,19 @@ namespace CustomList
         public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)
         {
             //returns a single CustomList<T> that contains all items from firstList and all items from secondList 
-            return null;
+            CustomList<T> combinedLists = new CustomList<T>();
+
+            for (int i = 0; i < (firstList.Count); i++)
+            {
+                combinedLists.Add(firstList.items[i]);
+            }
+            for (int i = 0; i < (secondList.Count); i++)
+            {
+                combinedLists.Add(secondList.items[i]);
+            }
+            
+            //CustomList<T> allItems = firstList.items + secondList.items;
+            return combinedLists;
         }
 
         public static CustomList<T> operator -(CustomList<T> firstList, CustomList<T> secondList)

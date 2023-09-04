@@ -21,15 +21,20 @@ namespace CustomList
             //string myListAsString = myList.ToString();
             //Console.WriteLine(myListAsString);
             CustomList<int> intList = new CustomList<int>();
+            CustomList<int> intList2 = new CustomList<int>() { 6, 7, 8, 9, 10 };
             intList.Add(1);
             intList.Add(2);
             intList.Add(3);
             intList.Add(4);
             intList.Add(5);
 
+            CustomList<int> comboList = intList + intList2;
+            
+            string newStringFromInts = comboList.ToString();
 
-            // Act
-            string newStringFromInts = intList.ToString();
+            Console.WriteLine(newStringFromInts);
+            Console.WriteLine("\n---------------------\n");
+            Console.WriteLine(comboList);
         }
     }
 }
