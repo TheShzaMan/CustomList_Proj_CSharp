@@ -56,14 +56,13 @@ namespace CustomListTests
         {
             // Arrange
             CustomList<string> firstList = new CustomList<string>() { "a", "a", "a"};
-            CustomList<string> secondList = new CustomList<string>() { "a"`
- |};
+            CustomList<string> secondList = new CustomList<string>() { "a" };
 
             // Act
             CustomList<string> newList = firstList - secondList;
             string itemsInNewList = newList.ToString();
             // Assert
-            Assert.AreEqual(firstList, newList);
+            Assert.AreEqual("a a", itemsInNewList);
         }
     }
 }
