@@ -16,9 +16,28 @@ namespace CustomList
         private int capacity;
         private int count;
 
-        public T[] Items { get => items; set => items = value; }
-        public int Capacity { get => capacity; }//set => capacity = value; }
+        public int Capacity { get => capacity; }
         public int Count { get => count; }
+        //public T[] Items { get => items; set => items = value; }
+        public T this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= Count)
+                {
+                    throw new ArgumentOutOfRangeException("index");
+                }
+                return items[index];
+            }
+            set
+            {
+                if (index < 0 || index >= Count)
+                {
+                    throw new ArgumentOutOfRangeException("index");
+                }
+                items[index] = value;
+            }
+        }
 
         //Constructor
         public CustomList()
@@ -36,7 +55,7 @@ namespace CustomList
             //transfer all items to new array
             if (count < capacity)
             {
-                Items[count] = item;
+                items[count] = item;
                 count++;
             }
             else  
@@ -45,7 +64,7 @@ namespace CustomList
                 T[] newItems = new T[capacity];
                 for (int i = 0; i < count; i++)
                 {
-                    newItems[i] = Items[i];
+                    newItems[i] = items[i];
                 }
                 newItems[count] = item;
                 count++;
@@ -143,6 +162,7 @@ namespace CustomList
                 }
             }
             return firstList;
+            
         }
 
     }

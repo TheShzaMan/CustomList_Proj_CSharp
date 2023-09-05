@@ -1,0 +1,66 @@
+Minus Operator Overload ( - operator overload)
+
+
+Definition
+
+Compares two separate lists of same type from the CustomList<T> class and subtracts, or removes, each item from the first list that is also present in the second list.  The result is a new CustomList<T> containing only the items from the first list that were not also in the second list.
+
+
+Syntax
+
+public static CustomList<T> operator -(CustomList<T> firstList, CustomList<T> secondList)
+	
+	CustomList<T> newList = firstList - secondList;
+
+
+Parameters
+
+	CustomList<T> firstList 
+The CustomList<T> that list of items of which the second list of items will be compared to and from which matching items will be removed by the single instance.  Items are compared one item to one item and repeated instances of any item will be treated separately.  Items in this list that are not matched will be the items that make up the contents of the resulting new CustomList<T>.
+
+	CustomList<T> secondList	
+The CustomList<T> that is used to compare items to the first list.  Each item in this list will be compared against each item in the first list and item matches will result in that item in the first list being excluded from the new list.  Nothing from the second list will be included in the new list and the second list's items will have no further purpose.
+
+
+Return Type
+
+	CustomList<T> 
+A new CustomList<T> created from only the items in firstList that were not also in secondList.  Second list items are only used to compare to first list items and have no further purpose.
+
+
+Example
+
+The following example shows the minus operator overload being used to subtract a secondList of type string containing the items:
+"b", "c", "d", "e", "f" and  "g"
+
+from a firstList of type string containing items:
+"a", "b" and "c"
+
+the result is a newList containing only one item, "a".
+
+---------------------------------------------------------------------------------------------
+
+using System.Collections;
+
+namespace CustomList
+{
+	internal class Program
+   	{
+		static void Main(string[] args)
+		{
+			CustomList<string> firstList = new CustomList<string>() { "a", "b", "c" };
+              		CustomList<string> secondList = new CustomList<string>() { "b", "c", "d", "g", "e", "f"};
+			CustomList<string> newList = firstList - secondList;
+			Console.WriteLine(newList);
+		
+			//// console output: a
+		
+			// The secondList "b" matches the firstList "b"
+			// The secondList "c" matches the firstList "c"
+			// secondList does not contain an "a" to match firstList "a"
+			// firstList "a" is the only item added to newList
+			// remaining items in secondList serve no further purpose
+		}
+   	}
+}	
+

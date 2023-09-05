@@ -6,18 +6,13 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
-            //CustomList<bool> myList = new CustomList<bool>();
-            //myList.Add("a");
-            //myList.Add("b");
-            //myList.Add("c");
-            //myList.Add("d");
-            //myList.Add("e");
-            //myList.Add(true);
-            //myList.Add(true);
-            //myList.Add(false);
-            //myList.Add(true);
-            //myList.Add(false);
+            CustomList<int> myList = new CustomList<int>() { 1, 2, 3, };
 
+            //int existingIndex = myList[2];
+            //int oobIndex = myList.Items[5];
+
+           // Console.WriteLine("Index zero: " + existingIndex);
+           // Console.WriteLine("OutOfBounds Index: " + myList[5]);
             //string myListAsString = myList.ToString();
             //Console.WriteLine(myListAsString);
             //CustomList<int> intList = new CustomList<int>();
@@ -32,9 +27,9 @@ namespace CustomList
 
             CustomList<string> firstList = new CustomList<string>() { "a", "b", "c", "a", "b" };
             CustomList<string> secondList = new CustomList<string>() { "b", "c", "a", };
+            //Console.WriteLine(firstList.Items[9]);
 
-            // Act
-             CustomList<string> newList = firstList - secondList;
+            CustomList<string> newList = firstList - secondList;
             //string newStringFromList = newList.ToString();
 
             //Console.WriteLine(newStringFromList);
