@@ -6,8 +6,8 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
-            CustomList<string> firstList = new CustomList<string>() { "the", "lists", "been" };
-            CustomList<string> secondList = new CustomList<string>() { "two", "have", "zipped" };
+            CustomList<string> firstList = new CustomList<string>() { "The", "lists", "been", "!" };
+            CustomList<string> secondList = new CustomList<string>() { "two", "have", "zipped", "Woo", "Hoo", "!" };
             
             firstList.Zip(secondList);
 

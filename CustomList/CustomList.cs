@@ -159,12 +159,26 @@ namespace CustomList
         public void Zip(CustomList<T> listToZip)
         {
             T[] zippedList = new T[count + listToZip.count];
-            for (int i = 0, j = 0; j < (count + listToZip.count); i++, j += 2)
+            for (int i = 0, j = 0; j < (count + listToZip.count); i++, j++)
             {
-                zippedList[j] = this[i];
-                zippedList[j + 1] = listToZip[i];
+                if (i < count && i < listToZip.count)
+                {
+                    zippedList[j] = this[i];
+                    zippedList[j + 1] = listToZip[i];
+                    j++;
+                }
+                else if (i >= count)
+                {
+                    zippedList[j] = listToZip[i];
+                    
+                }
+                else
+                {
+                    zippedList[j] = this[i];
+                    
+                }
             }
-            count += (count + listToZip.count) / 2;
+            count = count + listToZip.count;
             items = zippedList;
 
         }
