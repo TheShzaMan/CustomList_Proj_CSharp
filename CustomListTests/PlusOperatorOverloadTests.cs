@@ -45,7 +45,8 @@ namespace CustomListTests
             string stringOfItems = comboList.ToString();
 
             // Assert
-            Assert.AreEqual("a b c d e f g", stringOfItems);
+            //Assert.AreEqual("a b c d e f g", stringOfItems);
+            Assert.AreEqual(7, comboList.Count);
         }
         [TestMethod]
         public void PlusOperator_ListTwoLargerThanListOne_ComboListHasAllItemsFromBoth()

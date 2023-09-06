@@ -25,7 +25,7 @@ namespace CustomListTests
             // Act
             customList.Remove("a");
             int a_Count = 0;
-            foreach (string item in customList.Items) 
+            foreach (string item in customList) 
             {
                 if (item == "a")
                 {
@@ -91,7 +91,7 @@ namespace CustomListTests
             // Act
             customList.Remove("b");
             // Assert
-            Assert.AreEqual("c", customList.Items[1]);
+            Assert.AreEqual("c", customList[1]);
         }
         [TestMethod]
         public void Remove_IndexOfItemInIndex3WhenItemInIndex2Removed_ItemIsMovedToIndex2()
@@ -105,7 +105,7 @@ namespace CustomListTests
             // Act
             customList.Remove("b");
             // Assert
-            Assert.AreEqual("d", customList.Items[2]);
+            Assert.AreEqual("d", customList[2]);
         }
 
         [TestMethod]
@@ -121,7 +121,7 @@ namespace CustomListTests
             // Act
             customList.Remove("c");
             int c_Count = 0;
-            foreach (string item in customList.Items)
+            foreach (string item in customList)
             {
                 if (item == "c")
                 {

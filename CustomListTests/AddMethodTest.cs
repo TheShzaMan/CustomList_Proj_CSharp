@@ -28,7 +28,7 @@ namespace CustomListTests
             customList.Add("item");
 
             // Assert
-            Assert.AreEqual("item", customList.Items[0]);
+            Assert.AreEqual("item", customList[0]);
         }
         [TestMethod]
         public void Add_SecondItemAdded_ItemIsFoundInIndex1()
@@ -41,7 +41,7 @@ namespace CustomListTests
             customList.Add("item2");
 
             // Assert
-            Assert.AreEqual("item2", customList.Items[1]);
+            Assert.AreEqual("item2", customList[1]);
         }
         [TestMethod]
         public void Add_ThirdItemAdded_ItemIsFoundInIndex2()
@@ -55,7 +55,7 @@ namespace CustomListTests
             customList.Add("item3");
 
             // Assert
-            Assert.AreEqual("item3", customList.Items[2]);
+            Assert.AreEqual("item3", customList[2]);
         }
         [TestMethod]
         public void Add_ItemAddedExceedsCapacityValue_CapacityDoubles()
@@ -87,7 +87,7 @@ namespace CustomListTests
             customList.Add("E");
 
             // Assert
-            Assert.AreEqual("B", customList.Items[1]);
+            Assert.AreEqual("B", customList[1]);
         }
         [TestMethod]
         public void Add_ItemEIndexAfterCapacityIncrease_EIsIndex4()
@@ -103,7 +103,7 @@ namespace CustomListTests
             customList.Add("E");
 
             // Assert
-            Assert.AreEqual("E", customList.Items[4]);
+            Assert.AreEqual("E", customList[4]);
         }
 
         //[TestMethod]

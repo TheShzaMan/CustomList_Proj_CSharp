@@ -18,14 +18,13 @@ namespace CustomList
 
         public int Capacity { get => capacity; }
         public int Count { get => count; }
-        //public T[] Items { get => items; set => items = value; }
         public T this[int index]
         {
             get
             {
                 if (index < 0 || index >= Count)
                 {
-                    throw new ArgumentOutOfRangeException("index");
+                    throw new ArgumentOutOfRangeException("Index is out of the range of this array.");
                 }
                 return items[index];
             }
@@ -33,7 +32,7 @@ namespace CustomList
             {
                 if (index < 0 || index >= Count)
                 {
-                    throw new ArgumentOutOfRangeException("index");
+                    throw new ArgumentOutOfRangeException("Index is out of the range of this array.");
                 }
                 items[index] = value;
             }
@@ -45,7 +44,6 @@ namespace CustomList
             capacity = 4;
             count = 0;
             items = new T[capacity];
-            
         }
         //Member Methods (CAN DO)
         public void Add(T item)
@@ -84,10 +82,10 @@ namespace CustomList
                 T[] newArray = new T[capacity];
                 for (int i = 0, j = 0; i < count; i++, j++)
                 {
-                    newArray[j] = items[i];
+                    newArray[j] = this[i];
                     if (i == j)
                     {
-                        if (items[i].Equals(item))
+                        if (this[i].Equals(item))
                         {
                             j--;
                         }
@@ -106,8 +104,7 @@ namespace CustomList
             string[] itemsAsStrings = new string[count];
             for (int i = 0; i < count; i++)
             {
-                string itemAsString = Convert.ToString(items[i]);
-                itemsAsStrings[i] = itemAsString;
+                itemsAsStrings[i] = Convert.ToString(this[i]);
             }
             string listAsString = string.Join(" ", itemsAsStrings);
             return listAsString;
@@ -118,7 +115,7 @@ namespace CustomList
 
             for (int i = 0; i < count; ++i)
             {
-                yield return items[i];
+                yield return this[i];
             }
         }
 
@@ -129,13 +126,12 @@ namespace CustomList
 
             for (int i = 0; i < (firstList.Count); i++)
             {
-                combinedLists.Add(firstList.items[i]);
+                combinedLists.Add(firstList[i]);
             }
             for (int i = 0; i < (secondList.Count); i++)
             {
-                combinedLists.Add(secondList.items[i]);
+                combinedLists.Add(secondList[i]);
             }
-            
             //CustomList<T> allItems = firstList.items + secondList.items;
             return combinedLists;
         }
@@ -149,21 +145,28 @@ namespace CustomList
             {
                 for (int j = 0; j < secondList.Count; j++)
                 {
-                    if (firstList.items[i].Equals(secondList.items[j]))
+                    if (firstList[i].Equals(secondList[j]))
                     {
-                        firstList.Remove(firstList.items[i]);
-                        secondList.Remove(secondList.items[j]);
+                        firstList.Remove(firstList[i]);
+                        secondList.Remove(secondList[j]);
                         i--;
                         break;
                     }
-                    //else
-                    //{
-                    //}
                 }
             }
             return firstList;
-            
         }
+        public void Zip(CustomList<T> listToZip)
+        {
+            T[] zippedList = new T[count + listToZip.count];
+            for (int i = 0, j = 0; j < (count + listToZip.count); i++, j += 2)
+            {
+                zippedList[j] = this[i];
+                zippedList[j + 1] = listToZip[i];
+            }
+            count += (count + listToZip.count) / 2;
+            items = zippedList;
 
+        }
     }
 }
