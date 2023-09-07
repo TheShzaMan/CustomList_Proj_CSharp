@@ -1,2 +1,2 @@
 # CustomList_Proj_CSharp
-A generic CustomList class that mimics the List&lt;T> class in .NET but with additional methods for combining separate instances of a list together into one bigger list.
+A generic CustomList class that mimics the List&lt;T> class in .NET but with additional methods for combining separate instances of a list together into one bigger list, subtracting parts of one list from another and a method that combines 2 lists in a zipper-like manner. This CustomList Class was built using the test-driven design, or TDD method, where unit tests are created before any code is written and later logic is built into methods that will pass all the tests.
